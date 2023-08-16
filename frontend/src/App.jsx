@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import HomePage from './HomePage';
 import LoginPage from './LoginPage';
 import Header from './Header';
+import DetailVideo from './DetailVideo';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Switch>
             <Route path="/" exact component={HomePage} />
             <Route path="/login" exact component={LoginPage} />
+            <Route path="/detail/:id" element={<DetailVideo />} />
           </Switch>
         </Box>
       </Router>

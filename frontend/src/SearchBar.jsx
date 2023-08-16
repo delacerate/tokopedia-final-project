@@ -1,41 +1,40 @@
-import React, { useState } from 'react';
-import { InputGroup, Input, InputRightElement, Button, Box } from '@chakra-ui/react';
+import { useState } from "react";
+import { FaSearch } from "react-icons/fa";
 
-const SearchBar = ({ onSearch }) => {
-    const [searchTerm, setSearchTerm] = useState('');
+import "./SearchBar.css";
 
-    const handleInputChange = (event) => {
-        setSearchTerm(event.target.value);
+export const SearchBar = ({ setResults }) => {
+    const [input, setInput] = useState("");
+
+    const fetchData = (value) => {
+        fetch("https://jsonplaceholder.typicode.com/users")
+            .then((response) => response.json())
+            .then((json) => {
+                const results = json.filter((user) => {
+                    return (
+                        value &&
+                        user &&
+                        user.name &&
+                        user.name.toLowerCase().includes(value)
+                    );
+                });
+                setResults(results);
+            });
     };
 
-    const handleSearchClick = () => {
-        onSearch(searchTerm);
-    };
-
-    const handleKeyDown = (event) => {
-        if (event.key === 'Enter') {
-            onSearch(searchTerm);
-        }
+    const handleChange = (value) => {
+        setInput(value);
+        fetchData(value);
     };
 
     return (
-        <Box display="flex" alignItems="center">
-            <InputGroup maxW="md">
-                <Input
-                    placeholder="Search..."
-                    value={searchTerm}
-                    onChange={handleInputChange}
-                    onKeyDown={handleKeyDown}
-                />
-                <InputRightElement width="4.5rem">
-                    <Button h="1.75rem" size="sm" onClick={handleSearchClick}>
-                        Search
-                    </Button>
-                </InputRightElement>
-            </InputGroup>
-            <div>{searchTerm}</div>
-        </Box>
+        <div className="input-wrapper">
+            <FaSearch id="search-icon" />
+            <input
+                placeholder="Type to search..."
+                value={input}
+                onChange={(e) => handleChange(e.target.value)}
+            />
+        </div>
     );
 };
-
-export default SearchBar;

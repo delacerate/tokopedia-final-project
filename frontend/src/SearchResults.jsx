@@ -1,14 +1,12 @@
-import React from 'react';
-import { Text, Flex } from '@chakra-ui/react';
+import "./SearchResults.css";
 
-const SearchResults = ({ results }) => {
-    return (
-        <Flex direction="column" alignItems="flex-start">
-            {results.map((result, index) => (
-                <Text key={index}>{result}</Text>
-            ))}
-        </Flex>
-    );
+export const SearchResult = ({ result }) => {
+  return (
+    <div
+      className="search-result"
+      onClick={(e) => alert(`You selected ${result}!`)}
+    >
+      {result}
+    </div>
+  );
 };
-
-export default SearchResults;
