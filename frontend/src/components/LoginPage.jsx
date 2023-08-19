@@ -12,7 +12,7 @@ import {
   Link,
   FormControl,
   FormHelperText,
-  InputRightElement
+  InputRightElement,
 } from "@chakra-ui/react";
 import { FaUserAlt, FaLock } from "react-icons/fa";
 
@@ -39,7 +39,7 @@ const LoginPage = () => {
         justifyContent="center"
         alignItems="center"
       >
-        <Heading color="teal.400">Welcome</Heading>
+        <Heading color="#4DB953">Welcome</Heading>
         <Box minW={{ base: "90%", md: "468px" }}>
           <form>
             <Stack
@@ -52,7 +52,7 @@ const LoginPage = () => {
                 <InputGroup>
                   <InputLeftElement
                     pointerEvents="none"
-                    children={<CFaUserAlt color="gray.300" />}
+                    children={<CFaUserAlt color="#4DB953" />}
                   />
                   <Input type="email" placeholder="email address" />
                 </InputGroup>
@@ -62,7 +62,7 @@ const LoginPage = () => {
                   <InputLeftElement
                     pointerEvents="none"
                     color="gray.300"
-                    children={<CFaLock color="gray.300" />}
+                    children={<CFaLock color="#4DB953" />}
                   />
                   <Input
                     type={showPassword ? "text" : "password"}
@@ -82,7 +82,7 @@ const LoginPage = () => {
                 borderRadius={0}
                 type="submit"
                 variant="solid"
-                colorScheme="teal"
+                colorScheme="brandGreen"
                 width="full"
               >
                 Login
@@ -93,7 +93,7 @@ const LoginPage = () => {
       </Stack>
       <Box>
         New to us?{" "}
-        <Link color="teal.500" href="#">
+        <Link color="#4DB953" href="#">
           Sign Up
         </Link>
       </Box>

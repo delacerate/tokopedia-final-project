@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { SimpleGrid, Image } from '@chakra-ui/react';
-import { Link } from 'react-router-dom'; // Import Link
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 const HomePage = () => {
@@ -8,7 +8,7 @@ const HomePage = () => {
 
     useEffect(() => {
         // Fetch product thumbnail URLs from the backend API using Axios
-        axios.get('YOUR_BACKEND_URL_HERE')
+        axios.get('/api/products') // Assuming you have an API route for fetching products
             .then(response => {
                 const data = response.data; // Assuming the response contains an array of product objects with thumbnail URLs
                 setProductThumbnails(data);
@@ -17,18 +17,18 @@ const HomePage = () => {
     }, []);
 
     return (
-        <SimpleGrid columns={7} spacing={4} p={8}>
+        <SimpleGrid columns={5} spacing={8} p={10}>
             {productThumbnails.map((product, index) => (
                 <Link
                     key={index}
-                    to={`/detail/${product.id}`} // Assuming product has an 'id' property
+                    to={`/detail/${product._id}`} // Assuming product has an '_id' property
                 >
-                    -      <Image
-                        src={product.thumbnailUrl} // Assuming your product object has a 'thumbnailUrl' property
+                    <Image
+                        src={product.Thumbnail} // Assuming your product object has a 'Thumbnail' property
                         alt={`Product Thumbnail ${index + 1}`}
                         borderRadius="md"
-                        width="360px"
-                        height="640px"
+                        width="300px"
+                        height="480px"
                     />
                 </Link>
             ))}

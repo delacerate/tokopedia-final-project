@@ -1,22 +1,22 @@
 import React from 'react';
 import { ChakraProvider, Box } from '@chakra-ui/react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-
-import HomePage from './HomePage';
-import LoginPage from './LoginPage';
-import Header from './Header';
-import DetailVideo from './DetailVideo';
+import HomePage from './components/HomePage.jsx';
+import LoginPage from './components/LoginPage.jsx';
+import Header from './components/Header.jsx';
+import customTheme from './components/theme.jsx';
+// import ProductDetailsPage from './ProductDetailsPage';
 
 function App() {
   return (
-    <ChakraProvider>
+    <ChakraProvider theme={customTheme}>
       <Router>
         <Header />
         <Box p={4}>
           <Switch>
             <Route path="/" exact component={HomePage} />
+            {/* <Route path="/details/:productID" component={ProductDetailsPage} /> */}
             <Route path="/login" exact component={LoginPage} />
-            <Route path="/detail/:id" element={<DetailVideo />} />
           </Switch>
         </Box>
       </Router>
