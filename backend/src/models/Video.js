@@ -5,14 +5,14 @@ const videoSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    url: {
+    urlImage: {
         type: String,
         required: true,
     },
-    Thumbnail: {
+    UrlThumbnail: {
         type: String,
         required: true,
     },
 });
 
-module.exports = mongoose.model("Video", videoSchema);
+module.exports = mongoose.model("Video", videoSchema, "Video");

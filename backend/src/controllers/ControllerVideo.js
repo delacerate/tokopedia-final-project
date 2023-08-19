@@ -9,7 +9,7 @@ const getAllVideos = async (req, res) => {
             query = {
                 $or: [
                     { videoID: { $regex: search, $options: "i" } },
-                    { titleImageThumbnail: { $regex: search, $options: "i" } },
+                    { urlThumbnail: { $regex: search, $options: "i" } },
                 ],
             };
         }
