@@ -1,4 +1,5 @@
 require('dotenv').config();
+const bodyParser = require("body-parser");
 const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
@@ -6,6 +7,14 @@ const app = express();
 const port = process.env.PORT || 5000;
 const MONGO_URI = process.env.MONGO_URI;
 const router = require('./src/routes/routerall');
+
+
+app.use(bodyParser.json());
+app.use(
+    bodyParser.urlencoded({
+        extended: true,
+    })
+);
 
 mongoose.connect(MONGO_URI, {
     useNewUrlParser: true,
