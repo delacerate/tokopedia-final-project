@@ -21,7 +21,7 @@ mongoose.connect(MONGO_URI, {
     useUnifiedTopology: true
 });
 
-const allowedOrigins = ['http://localhost:3000', 'https://yourfrontenddomain.com'];
+const allowedOrigins = ['http://localhost:3000', 'https://tokopedia-final-project.vercel.app/'];
 const corsOptions = {
     origin: function (origin, callback) {
         if (allowedOrigins.includes(origin) || !origin) {
