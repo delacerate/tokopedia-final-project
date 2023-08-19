@@ -8,7 +8,7 @@ const getAllProducts = async (req, res) => {
         if (search) {
             query.$or = [
                 { productID: { $regex: search, $options: "i" } },
-                { titleProduct: { $regex: search, $options: "i" } },
+                { productTitle: { $regex: search, $options: "i" } },
             ];
         }
 
