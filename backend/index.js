@@ -21,9 +21,18 @@ mongoose.connect(MONGO_URI, {
     useUnifiedTopology: true
 });
 
-app.use(cors({
-    origin: 'http://localhost:5000'
-}));
+const allowedOrigins = ['http://localhost:3000', 'https://yourfrontenddomain.com'];
+const corsOptions = {
+    origin: function (origin, callback) {
+        if (allowedOrigins.includes(origin) || !origin) {
+            callback(null, true);
+        } else {
+            callback(new Error('Not allowed by CORS'));
+        }
+    }
+};
+app.use(cors(corsOptions));
+
 const connection = mongoose.connection;
 
 app.use("/api", router);  // Corrected the use of router
