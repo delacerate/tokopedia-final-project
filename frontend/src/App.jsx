@@ -6,6 +6,7 @@ import LoginPage from './components/LoginPage.jsx';
 import Header from './components/Header.jsx';
 import customTheme from './components/theme.jsx';
 // import ProductDetailsPage from './ProductDetailsPage';
+import ProductDetailsPage from './components/ProductDetailsPage';
 
 function App() {
   return (
@@ -15,7 +16,7 @@ function App() {
         <Box p={4}>
           <Switch>
             <Route path="/" exact component={HomePage} />
-            {/* <Route path="/details/:productID" component={ProductDetailsPage} /> */}
+            <Route path="/details/product/:videoID" component={ProductDetailsPage} />
             <Route path="/login" exact component={LoginPage} />
           </Switch>
         </Box>

@@ -6,20 +6,14 @@ import "./SearchBar.css";
 export const SearchBar = ({ setResults }) => {
     const [input, setInput] = useState("");
 
-    const fetchData = (value) => {
-        fetch("https://jsonplaceholder.typicode.com/users")
-            .then((response) => response.json())
-            .then((json) => {
-                const results = json.filter((user) => {
-                    return (
-                        value &&
-                        user &&
-                        user.name &&
-                        user.name.toLowerCase().includes(value)
-                    );
-                });
-                setResults(results);
-            });
+    const fetchData = async (value) => {
+        try {
+            const response = await fetch(`https://fuzzy-shift-deer.cyclic.cloud/api/video?search=${value}`);
+            const data = await response.json();
+            setResults(data);
+        } catch (error) {
+            console.error("Error fetching data:", error);
+        }
     };
 
     const handleChange = (value) => {

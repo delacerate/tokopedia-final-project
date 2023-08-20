@@ -32,7 +32,7 @@ const HomePage = () => {
             {hardcodedData.map((product, index) => (
                 <Link
                     key={`thumbnail-${index}`}
-                    to={`/api/product/${index}`} // You can use index as a placeholder for the product ID
+                    to={`/details/product/${product.videoID}`} // Use the videoID as the URL parameter
                 >
                     <Button
                         borderRadius="md"
